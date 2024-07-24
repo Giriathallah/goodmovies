@@ -41,7 +41,7 @@ const DetailsPage = () => {
     const fetchWatchlist = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:5000/api/watchlist/${userId}`,
+          `${import.meta.env.VITE_APP_BACKEND}/watchlist/${userId}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -103,7 +103,7 @@ const DetailsPage = () => {
 
     if (isInWatchlist) {
       try {
-        await axios.delete(`http://localhost:5000/api/watchlist`, {
+        await axios.delete(`${import.meta.env.VITE_APP_BACKEND}/watchlist`, {
           data: {
             userId: userId,
             movie_id: id,
@@ -118,11 +118,15 @@ const DetailsPage = () => {
       }
     } else {
       try {
-        await axios.post("http://localhost:5000/api/watchlist", watchlistData, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
+        await axios.post(
+          `${import.meta.env.VITE_APP_BACKEND}/watchlist`,
+          watchlistData,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
         setIsInWatchlist(true);
       } catch (error) {
         console.error("Failed to add movie to watchlist:", error.message);
