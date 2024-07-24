@@ -37,7 +37,7 @@ const RegisterPage = () => {
           headers: { "Content-Type": "application/json" },
         }
       );
-      if (response.status === 200) {
+      if (response.status === 201) {
         setMessage("User registered successfully. Verification email sent.");
       }
     } catch (error) {
