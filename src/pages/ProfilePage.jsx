@@ -24,7 +24,7 @@ const ProfilePage = () => {
       try {
         setLoading(true);
         const response = await fetch(
-          `http://localhost:5000/api/user/${userId}`,
+          `${import.meta.env.VITE_APP_BACKEND}/user/${userId}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -52,7 +52,7 @@ const ProfilePage = () => {
     const fetchWatchlistData = async () => {
       try {
         const response = await fetch(
-          `http://localhost:5000/api/watchlist/${userId}`,
+          `${import.meta.env.VITE_APP_BACKEND}/watchlist/${userId}`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -83,14 +83,17 @@ const ProfilePage = () => {
 
   const handleUsernameChange = async () => {
     try {
-      const response = await fetch(`http://localhost:5000/api/user/${userId}`, {
-        method: "PUT",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({ newUsername }),
-      });
+      const response = await fetch(
+        `${import.meta.env.VITE_APP_BACKEND}/user/${userId}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({ newUsername }),
+        }
+      );
 
       if (!response.ok) {
         throw new Error("Failed to update username");
