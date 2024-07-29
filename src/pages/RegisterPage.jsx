@@ -39,6 +39,10 @@ const RegisterPage = () => {
       );
       if (response.status === 201) {
         setMessage("User registered successfully. Verification email sent.");
+        setUsername("");
+        setEmail("");
+        setPassword("");
+        setConfirmPassword("");
       }
     } catch (error) {
       console.error(
@@ -54,17 +58,17 @@ const RegisterPage = () => {
       <h1 className="text-center text-2xl md:text-3xl text-white bg-[#DA7086] mb-10 px-4 py-2 rounded-md">
         Good Movies
       </h1>
-      <div className="max-w-md w-full space-y-8 border-black shadow py-4 px-6 bg-blue-gray-900 rounded-xl">
+      <div className="max-w-md w-full space-y-8  border-black shadow py-4 px-6 bg-blue-gray-900 rounded-xl">
         <div>
           <h2 className="mt-6 text-center text-2xl font-extrabold text-white">
             Sign up for an account
           </h2>
-          <h1 className="text-center text-white mt-10">{message}</h1>
+          <h1 className="text-center text-white mt-10 ">{message}</h1>
         </div>
         <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
           <input type="hidden" name="remember" defaultValue="true" />
-          <div className="rounded-md shadow-sm -space-y-px">
-            <div className="flex flex-col gap-2 mb-5">
+          <div className="rounded-md shadow-sm -space-y-px flex flex-col gap-5 ">
+            <div className="flex flex-col gap-2">
               <label htmlFor="username" className="text-white">
                 Username
               </label>
