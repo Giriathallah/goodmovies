@@ -21,6 +21,7 @@ const VerifyEmailPage = () => {
         );
 
         setMessage(response.data.message);
+        navigate("/login");
       } catch (error) {
         setMessage(error.response?.data?.message || error.message);
       }
