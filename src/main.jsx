@@ -13,6 +13,7 @@ import "animate.css";
 import LoginPage from "./pages/LoginPage";
 import UpComingPage from "./pages/UpcomingPage";
 import RegisterPage from "./pages/RegisterPage";
+import VerifyEmailPage from "./pages/VerifyEmail";
 
 const router = createBrowserRouter([
   {
@@ -53,6 +54,11 @@ const router = createBrowserRouter([
   {
     path: "/register",
     element: <RegisterPage />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/verify-email",
+    element: <VerifyEmailPage />,
     errorElement: <ErrorPage />,
   },
 ]);
